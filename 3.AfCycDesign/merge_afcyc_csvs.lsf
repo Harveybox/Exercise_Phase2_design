@@ -1,0 +1,22 @@
+#!/bin/bash
+#BSUB -J afcyc_merge
+#BSUB -q 33
+#BSUB -n 1
+#BSUB -R "span[ptile=1]"
+#BSUB -o %J.out
+#BSUB -e %J.err
+
+set -euo pipefail
+date
+
+MICROMAMBA="$HOME/bin/micromamba"
+ENV_NAME="afcycdesign"
+MERGE_SCRIPT="$HOME/Exercise_Phase2_design/merge_afcyc_csvs.py"
+SHARD_RESULT_ROOT="/scratch/2026-03-28/bme-yaozm/mcl1_test/afcyc_out/shard_results"
+MERGED_CSV="/scratch/2026-03-28/bme-yaozm/mcl1_test/afcyc_out/merged/results_merged.csv"
+
+$MICROMAMBA run -n "$ENV_NAME" python "$MERGE_SCRIPT" \
+  --shard_root "$SHARD_RESULT_ROOT" \
+  --out_csv "$MERGED_CSV"
+
+date

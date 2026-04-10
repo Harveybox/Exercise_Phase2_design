@@ -1,0 +1,32 @@
+#!/bin/bash
+#BSUB -J mcl1_mpnn_relax4
+#BSUB -q 33
+#BSUB -n 40
+#BSUB -R "span[ptile=40]"
+#BSUB -o %J.out
+#BSUB -e %J.err
+
+set -euo pipefail
+date
+
+MICROMAMBA="$HOME/bin/micromamba"
+ENV_NAME="proteinmpnn_binder_design"
+
+SCRIPT="$HOME/dl_binder_design/mpnn_fr/dl_interface_design.py"
+
+INPUT_DIR="/scratch/2026-03-20/bme-yaozm/mcl1_test/example_outputs"
+OUT_DIR="/scratch/2026-03-20/bme-yaozm/mcl1_test/mpnn_relax4_out"
+CHECKPOINT="$OUT_DIR/mpnn_relax4.check.point"
+
+mkdir -p "$OUT_DIR" logs
+rm -f "$CHECKPOINT"
+
+$MICROMAMBA run -n "$ENV_NAME" python "$SCRIPT" \
+  -pdbdir "$INPUT_DIR" \
+  -outpdbdir "$OUT_DIR" \
+  -relax_cycles 4 \
+  -seqs_per_struct 1 \
+  -output_intermediates \
+  -checkpoint_name "$CHECKPOINT"
+
+date

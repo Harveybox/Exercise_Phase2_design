@@ -1,0 +1,30 @@
+#!/bin/bash
+#BSUB -J gabarap_fastrelax
+#BSUB -q 33
+#BSUB -n 40
+#BSUB -R "span[ptile=40]"
+#BSUB -o %J.out
+#BSUB -e %J.err
+
+set -euo pipefail
+date
+
+MICROMAMBA="$HOME/bin/micromamba"
+ENV_NAME="proteinmpnn_binder_design"
+
+SCRIPT="$HOME/Exercise_Phase1_pipeline/fastrelax_macrocycle.py"
+INPUT_DIR="$HOME/Exercise_Phase1_pipeline/gabarap_test/mpnn_out"
+OUT_DIR="$HOME/Exercise_Phase1_pipeline/gabarap_test/relaxed_models"
+SUMMARY_CSV="$OUT_DIR/fastrelax_summary.csv"
+
+mkdir -p "$OUT_DIR" logs
+
+$MICROMAMBA run -n "$ENV_NAME" python "$SCRIPT" \
+  --input_dir "$INPUT_DIR" \
+  --out_dir "$OUT_DIR" \
+  --summary_csv "$SUMMARY_CSV" \
+  --binder_chain B \
+  --repeats 1 \
+  --interface_shell 8.0
+
+date

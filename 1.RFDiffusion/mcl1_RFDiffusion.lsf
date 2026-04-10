@@ -1,0 +1,40 @@
+#!/bin/bash
+#BSUB -J gabarap_rfpeptides_test
+#BSUB -q 8v100-32-sc
+#BSUB -n 8
+#BSUB -R "span[ptile=8]"
+#BSUB -gpu "num=1/host"
+#BSUB -o %J.out
+#BSUB -e %J.err
+
+set -euo pipefail
+date
+
+module load cuda/11.8
+
+MICROMAMBA="$HOME/bin/micromamba"
+ENV_NAME="SE3nv"
+
+# ===== 你主要改这几项 =====
+RFDIFFUSION_DIR="$HOME/RFdiffusion"
+WORKDIR="/scratch/2026-03-20/bme-yaozm/mcl1_test"
+INPUT_PDB="$HOME/Exercise_Phase2_design/mcl1_test/MCL1_A_noLigand_filled.pdb"
+OUTPUT_PREFIX="$WORKDIR/example_outputs/diffused_binder_cyclic_mcl1"
+NUM_DESIGNS=500
+# =========================
+
+cd "$WORKDIR"
+
+export HYDRA_FULL_ERROR=1
+
+$MICROMAMBA run -n "$ENV_NAME" python "$RFDIFFUSION_DIR/scripts/run_inference.py" \
+  --config-name base \
+  inference.output_prefix="$OUTPUT_PREFIX" \
+  inference.num_designs="$NUM_DESIGNS" \
+  'contigmap.contigs=[16-16 A1-145/0]' \
+  inference.input_pdb="$INPUT_PDB" \
+  inference.cyclic=True \
+  diffuser.T=50 \
+  inference.cyc_chains='a' \
+
+date

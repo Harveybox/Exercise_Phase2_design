@@ -1,0 +1,1 @@
+/work/bme-yaozm/.lsbatch/1774443292.3511305.shell: line 27: 3276183 Segmentation fault      (core dumped) $PYTHON_BIN "$SCRIPT" --input_dir "$SHARD_INPUT_DIR" --out_csv "$SHARD_OUT_CSV" --target_chain "$TARGET_CHAIN" --binder_chain "$BINDER_CHAIN" --pack_input --pack_separated --packstat

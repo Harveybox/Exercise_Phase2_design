@@ -1,0 +1,33 @@
+#!/bin/bash
+#BSUB -J mcl1_afcyc
+#BSUB -q 8v100-32-sc
+#BSUB -n 1
+#BSUB -R "span[ptile=1]"
+#BSUB -gpu "num=1/host"
+#BSUB -o %J.out
+#BSUB -e %J.err
+
+set -euo pipefail
+date
+
+MICROMAMBA="$HOME/bin/micromamba"
+ENV_NAME="afcycdesign"
+
+SCRIPT="$HOME/Exercise_Phase2_design/afcyc_predict_batch.py"
+INPUT_DIR="/scratch/2026-03-20/bme-yaozm/mcl1_test/mpnn_relax4_out"
+OUT_DIR="$/scratch/2026-03-20/bme-yaozm/mcl1_test/afcyc_out"
+AF_PARAMS_DIR="$HOME/dl_binder_design/af2_initial_guess/model_weights/params"
+
+mkdir -p "$OUT_DIR" logs
+
+$MICROMAMBA run -n "$ENV_NAME" python "$SCRIPT" \
+  --input_dir "$INPUT_DIR" \
+  --out_dir "$OUT_DIR" \
+  --data_dir "$AF_PARAMS_DIR" \
+  --target_chain A \
+  --binder_chain B \
+  --offset_type 2 \
+  --num_recycles 3 \
+  --num_models 1
+
+date

@@ -1,0 +1,52 @@
+Fatal Python error: Segmentation fault
+
+Current thread 0x000014b1ddfbe680 [python] (most recent call first):
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 1053 in create_module
+  File "<frozen importlib._bootstrap>", line 816 in module_from_spec
+  File "<frozen importlib._bootstrap>", line 924 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/lib/python3.14/site-packages/pyrosetta/__init__.py", line 15 in <module>
+  File "<frozen importlib._bootstrap>", line 491 in _call_with_frames_removed
+  File "<frozen importlib._bootstrap_external>", line 759 in exec_module
+  File "<frozen importlib._bootstrap>", line 938 in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 1342 in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1371 in _find_and_load
+  File "/work/bme-yaozm/Exercise_Phase2_design/PyRosetta_fullScoring.py", line 9 in <module>
+
+Current thread's C stack trace (most recent call first):
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _Py_DumpStack+0x4a [0x556b5758e960]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x162171 [0x556b57599171]
+  Binary file "/lib64/libpthread.so.0", at +0x12ce0 [0x14b1ddb8cce0]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/lib/python3.14/site-packages/pyrosetta/rosetta.so", at +0x75e1e17 [0x14b1bedaee17]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/lib/python3.14/site-packages/pyrosetta/rosetta.so", at +0x75de815 [0x14b1bedab815]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/lib/python3.14/site-packages/pyrosetta/rosetta.so", at PyInit_rosetta+0x62 [0x14b1bed9f682]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x28d12b [0x556b576c412b]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x28cdef [0x556b576c3def]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x2bf7fd [0x556b576f67fd]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _PyEval_EvalFrameDefault+0x4d82 [0x556b575e81c2]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x1e1a68 [0x556b57618a68]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x1d4ce0 [0x556b5760bce0]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at PyObject_CallMethodObjArgs+0xe9 [0x556b5763f549]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at PyImport_ImportModuleLevelObject+0x91a [0x556b5763ea9a]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _PyEval_ImportName+0xcd [0x556b576b4d2d]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _PyEval_EvalFrameDefault+0x91eb [0x556b575ec62b]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x1a8e50 [0x556b575dfe50]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at PyEval_EvalCode+0xae [0x556b576b3fee]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x2a2c8e [0x556b576d9c8e]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _PyEval_EvalFrameDefault+0x4d82 [0x556b575e81c2]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x1e1a68 [0x556b57618a68]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x1d4ce0 [0x556b5760bce0]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at PyObject_CallMethodObjArgs+0xe9 [0x556b5763f549]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at PyImport_ImportModuleLevelObject+0x91a [0x556b5763ea9a]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _PyEval_ImportName+0xcd [0x556b576b4d2d]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at _PyEval_EvalFrameDefault+0x91eb [0x556b575ec62b]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x1a8e50 [0x556b575dfe50]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at PyEval_EvalCode+0xae [0x556b576b3fee]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x2beddd [0x556b576f5ddd]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x2c0458 [0x556b576f7458]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x2bfa24 [0x556b576f6a24]
+  Binary file "/work/bme-yaozm/.local/share/mamba/envs/PyRosettaScore/bin/python", at +0x2bf42d [0x556b576f642d]
+  <truncated rest of calls>
+/work/bme-yaozm/.lsbatch/1774443429.3511376.shell: line 27: 1877578 Segmentation fault      (core dumped) $PYTHON_BIN "$SCRIPT" --input_dir "$SHARD_INPUT_DIR" --out_csv "$SHARD_OUT_CSV" --target_chain "$TARGET_CHAIN" --binder_chain "$BINDER_CHAIN" --pack_input --pack_separated --packstat

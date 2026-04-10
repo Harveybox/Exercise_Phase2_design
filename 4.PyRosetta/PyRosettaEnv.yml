@@ -1,0 +1,14 @@
+name: PyRosettaScore
+channels:
+  - https://levinthal:casp15@conda.graylab.jhu.edu
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pyrosetta
+  - pandas
+  - scipy
+  - numpy
+  - pip
+  - pip:
+    - openpyxl  # 用于 pandas 处理 Excel 输出（可选）
